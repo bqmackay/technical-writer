@@ -9,6 +9,11 @@ Technical-Writer automates the updating of README files in response to code chan
 - Integrates with LangChain to manage AI interactions and logic flow.
 - Employs OpenAI's API for context-aware content generation.
 
+## Getting Started
+To add secret keys to this GitHub project, you need to include the following keys:
+- OPENAI_API_KEY
+- MY_GITHUB_KEY
+
 ## Current Status
 This project is in the early stages of development. Further instructions will be provided as the implementation progresses.
 
