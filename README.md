@@ -8,6 +8,7 @@ Technical-Writer automates the updating of README files in response to code chan
 - Utilizes GitHub Actions for workflow automation.
 - Integrates with LangChain to manage AI interactions and logic flow.
 - Employs OpenAI's API for context-aware content generation.
+- Supports the use of various LLM models for content generation.
 
 ## Current Status
 This project is in the early stages of development. Further instructions will be provided as the implementation progresses.
