@@ -1,6 +1,8 @@
 import os
 import base64
 from openai import OpenAI
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers.string import StrOutputParser
 
 def format_data_for_openai(diffs, readme_content, commit_messages):
     # Combine the changes into a string with clear delineation.
@@ -31,7 +33,7 @@ def format_data_for_openai(diffs, readme_content, commit_messages):
     return prompt
 
 def call_openai(prompt):
-    client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+    client = ChatOpenAI(api_key=os.getenv('OPENAI_API_KEY'), model="gpt-3.5-turbo-0125")
     try:
         # Construct the chat messages for the conversation
         messages = [
@@ -40,14 +42,13 @@ def call_openai(prompt):
         ]
         
         # Make the API call to OpenAI chat interface
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-        )
+        response = client.invoke(input=messages)
+        parser = StrOutputParser()
+        content = parser.invoke(input=response)
 
-        return response.choices[0].message.content 
+        return content 
     except Exception as e:
-        print(f"Error making OpenAI API call: {e}")
+        print(f"Error making LLM call: {e}")
 
 def update_readme_and_create_pr(repo, updated_readme, readme_sha):
     """Submit Updated README content as a PR in new branch."""
