@@ -22,3 +22,5 @@ This project is released under the MIT License. See the `LICENSE` file for more 
 - OpenAI for providing the API used for generating content.
 - GitHub for hosting and automation capabilities.
 - LangChain for the automation framework used to streamline AI operations.
+- Added cffi==1.16.0, cryptography==42.0.5, Deprecated==1.2.14, PyGithub==2.3.0, PyJWT==2.8.0, PyNaCl==1.5.0, and wrapt==1.16.0 to requirements.txt
+- Changed github import back to the way it was
